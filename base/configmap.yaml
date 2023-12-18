@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sammy-app
+data:
+  body: > 
+    <html>
+      <style>
+        body {
+          background-color: #222;
+        }
+        p {
+          font-size: 48px;
+          text-align: center;
+          margin-top: 20%;
+          color: #fff;
+        }
+      </style>
+      <body>
+        <p>Sammy says: Welcome to your Kubernetes app!</p>
+      </body>
+    </html>
