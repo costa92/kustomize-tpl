@@ -1,9 +1,12 @@
 - op: replace
   path: /spec/type
   value: LoadBalancer
+
+- op: replace
   path: /spec/ports/0/targetPort
   value: 80
-- op: add # action
+
+- op: add 
   path: /metadata/labels
-  value:
-    env: dev
+  value: 
+    env: dev 
