@@ -6,4 +6,6 @@ namespace: traefik
 #   - traefik.yaml
 #   name: traefik-config
 resources:
-  - ""
+- rbac.yaml
+- deployment.yaml
+- service.yaml
