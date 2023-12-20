@@ -1,37 +1,92 @@
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: traefik-ingress-controller
----
-kind: Deployment
 apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: traefik-ingress-controller
+  name: traefik
+  namespace: traefik
   labels:
-    k8s-app: traefik-ingress-lb
+    app: traefik
 spec:
   replicas: 1
   selector:
     matchLabels:
-      k8s-app: traefik-ingress-lb
+      app: traefik
   template:
     metadata:
       labels:
-        k8s-app: traefik-ingress-lb
-        name: traefik-ingress-lb
+        app: traefik
     spec:
       serviceAccountName: traefik-ingress-controller
       terminationGracePeriodSeconds: 60
       containers:
-      - image: traefik:v1.7
-        name: traefik-ingress-lb
-        ports:
-        - name: http
-          containerPort: 80
-        - name: admin
-          containerPort: 8080
-        args:
-        - --api
-        - --kubernetes
-        - --logLevel=INFO
+        - name: traefik
+          image: traefik:v2.9
+          env:
+            - name: TZ                            # 指定时区
+              value: "Asia/Shanghai"
+          ports:
+            - name: web
+              containerPort: 80
+              hostPort: 80
+              protocol: TCP
+            - name: websecure
+              containerPort: 443
+#              hostPort: 443                     # 将容器端口绑定所在服务器的 443 端口
+            - name: admin
+              containerPort: 9000
+            - name: metrics
+              containerPort: 9100
+            - name: tcpep
+              containerPort: 9200               # tcp端口
+            - name: udpep
+              containerPort: 9300               # udp端口
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - NET_BIND_SERVICE
+          args:
+            - --configfile=/etc/traefik/config/traefik.yaml
+          volumeMounts:
+            - mountPath: /etc/traefik/config
+              name: config
+            - mountPath: /etc/traefik/logs
+              name: logdir
+            - mountPath: /etc/localtime
+              name: timezone
+              readOnly: true
+          resources:
+            limits:
+              cpu: 200m
+              memory: 30Mi
+            requests:
+              cpu: 100m
+              memory: 20Mi
+      volumes:
+        - name: config
+          configMap:
+            name: traefik-config
+        - name: logdir
+          hostPath:
+            path: /data/traefik/logs
+            type: "DirectoryOrCreate"
+        - name: timezone
+          hostPath:
+            path: /etc/localtime
+            type: File
+      tolerations:                             # 设置容忍所有污点，防止节点被设置污点
+        - operator: "Exists"
+#      hostNetwork: true                        # 开启host网络，提高网络入口的网络性能
+      dnsConfig: # 开启host网络后，默认使用主机的dns配置，添加coredns配置
+        nameservers:
+          - 10.96.0.10
+        searches:
+          - traefik.svc.cluster.local
+          - svc.cluster.local
+          - cluster.local
+        options:
+          - name: ndots
+            value: "5"
+#      nodeSelector: # 设置node筛选器，在特定label的节点上启动
+#        IngressProxy: "true"                   # 调度至IngressProxy: "true"的节点
+
