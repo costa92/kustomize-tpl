@@ -8,7 +8,7 @@ namespace: traefik
 resources:
 - definition.yaml
 - traefik.yaml
+- account.yaml
 - rbac.yaml
-- sa.yaml
 - deployment.yaml
 - service.yaml

@@ -1,15 +1,26 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: traefik-ingress-service
+  name: traefik
+  namespace: traefik
 spec:
+  type: NodePort    ## 官网示例为LoadBalancer,为方便演示，此处改为NodePort
   selector:
-    k8s-app: traefik-ingress-lb
+    app: traefik
   ports:
-    - protocol: TCP
+    - name: web
+      protocol: TCP
       port: 80
-      name: web
-    - protocol: TCP
-      port: 8080
-      name: admin
-  type: NodePort
+      targetPort: 80
+    - name: websecure
+      protocol: TCP
+      port: 443
+      targetPort: 443
+    - name: admin
+      protocol: TCP
+      port: 9000
+      targetPort: 9000
+    - name: metrics
+      protocol: TCP
+      port: 9100
+      targetPort: 9100
