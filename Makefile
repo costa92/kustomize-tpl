@@ -1,4 +1,4 @@
 .PHONY: install
 install:
-  ./scripts/install.sh
+	./scripts/install.sh
 
