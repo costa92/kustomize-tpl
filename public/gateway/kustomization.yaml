@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: traefik
 resources:
-- definition.yaml
 - rbac.yaml
+- definitions.yaml
+- gateway-class.yaml
 
