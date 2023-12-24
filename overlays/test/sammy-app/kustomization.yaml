@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../../../base
 - service.yaml
+- configmap.yaml
 namespace: test
 nameSuffix: -test
 images:
@@ -10,5 +11,4 @@ images:
   newName: nginx
   newTag: "1.18"
 patches:
-- path: configmap.yaml
 - path: service.yaml

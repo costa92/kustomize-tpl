@@ -1,0 +1,20 @@
+- op: replace
+  path: /metadata/name
+  value: sammy-app
+
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts
+  value:
+    mountPath: /usr/share/nginx/html
+    name: sammy-app
+    # subPath: index.html
+- op: add
+  path: /spec/template/spec/volumes
+  value:
+    name: sammy-app
+    configMap:
+      name: sammy-app
+      items:
+      - key: body
+        path: index.html
+        

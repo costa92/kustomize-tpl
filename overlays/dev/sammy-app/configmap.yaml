@@ -17,6 +17,6 @@ data:
         }
       </style>
       <body>
-        <p>Dev 环境 Sammy says: Welcome to your Kubernetes app!</p>
+        <p>Sammy says: Welcome to your Kubernetes app!</p>
       </body>
     </html>

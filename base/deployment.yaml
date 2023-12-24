@@ -1,25 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sammy-app
+  name: base-app
   labels:
-    app: sammy-app
+    app: base-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sammy-app
+      app: base-app
   template:
     metadata:
       labels:
-        app: sammy-app
+        app: base-app
     spec:
       containers:
       - name: server
         image: default_image
-        volumeMounts:
-          - name: sammy-app
-            mountPath: /usr/share/nginx/html
         ports:
         - containerPort: 80
           protocol: TCP
@@ -33,10 +30,4 @@ spec:
         env:
         - name: LOG_LEVEL
           value: "DEBUG"
-      volumes:
-      - name: sammy-app
-        configMap:
-          name: sammy-app
-          items:
-          - key: body
-            path: index.html
+    

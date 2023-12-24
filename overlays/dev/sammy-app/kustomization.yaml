@@ -4,6 +4,7 @@ commonLabels:
   app: sammy-app
 resources:
 - ../../../base
+- configmap.yaml 
 # - service.yaml 
 images:
 - name: default_image
@@ -12,7 +13,11 @@ images:
 namespace: dev
 nameSuffix: -dev
 patches:
-- path: configmap.yaml  
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+  path: deployment-patch.yaml
 - target:
     version: v1 
     kind: Service 

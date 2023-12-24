@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../base 
+images:
+- name: default_image
+  newName: costa92/my-blog
+  newTag: "local-20231111194616"
+patches:
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+  path: deployment-patch.yaml
