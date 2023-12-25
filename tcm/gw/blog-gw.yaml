@@ -5,10 +5,10 @@ metadata:
   namespace: dev  # namespace where the gateway is deployed
 spec:
   gatewayClassName: traefik-gateway-class
-  listeners:
-    - name: http
-      protocol: HTTP
-      port: 80
-      allowedRoutes:
+  listeners:  # 定义了一些监听项，供 Route 进行绑定
+    - name: http #监听项名称。
+      protocol: HTTP   #定义协议，HTTP或者HTTPS 
+      port: 80   #监听项所占用的端口
+      allowedRoutes:  #定义流量转发范围
         namespaces:
-          from: All
+          from: All  #允许 Gateway 往所有的 Namespace 的 Pod 转发流量。
