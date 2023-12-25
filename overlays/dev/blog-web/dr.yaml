@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: ht
+spec:
+  exportTo:
+  - '*'
+  host: blog-web-service-dev.dev.svc.cluster.local
+  subsets:
+  - labels:
+      app: blog-web
+    name: canary
+  - labels:
+      app: blog-web
+    name: stable
+  trafficPolicy:
+    outlierDetection:
+      consecutive5xxErrors: 3
+      interval: 30s
+      baseEjectionTime: 30s
