@@ -2,6 +2,7 @@ apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: Gateway
 metadata:
   name: blog-web-gateway
+  namespace: dev  # namespace where the gateway is deployed
 spec:
   gatewayClassName: traefik-gateway-class
   listeners:
