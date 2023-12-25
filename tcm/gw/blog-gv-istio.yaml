@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: blog-web-gateway-dev
+  namespace: dev
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - hosts:
+        - traefik.test.com
+      port:
+        name: HTTP-80
+        number: 80
+        protocol: HTTP
