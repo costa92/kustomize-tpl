@@ -9,3 +9,5 @@ kubectl get ns
 ```sh
 kubectl create ns dev
 ```
+
+
