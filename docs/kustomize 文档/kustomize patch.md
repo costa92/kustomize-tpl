@@ -3,6 +3,7 @@
 ## use patches to add or override resources
 
 new file: overlay/dev/sammy-app/service-patch.yaml
+
 ```yaml
 - op: replace
   path: /spec/type
@@ -11,6 +12,7 @@ new file: overlay/dev/sammy-app/service-patch.yaml
   value: 80
 ```
 update file: overlay/dev/sammy-app/kustomization.yaml
+
 ```yaml
 patches:
 - path: configmap.yaml  
