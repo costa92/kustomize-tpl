@@ -31,7 +31,6 @@ deployment.apps/sammy-app-dev created
 kubectl delete -k ./overlays/dev/sammy-app/
 ```
 
-
 参考：
 
 [kubernetes](https://kubernetes.io/zh-cn/docs/tasks/manage-kubernetes-objects/kustomization/)
