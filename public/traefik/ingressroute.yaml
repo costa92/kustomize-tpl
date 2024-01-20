@@ -8,6 +8,8 @@ spec:
   routes:
   - match: Host(`traefik.test.com`) # 域名
     kind: Rule
+    middlewares:
+      - name: plugindemo
     services:
       - name: istio-ingressgateway # 与svc的name一致
         port: 80      # 与svc的port一致
