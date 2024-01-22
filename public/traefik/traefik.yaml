@@ -41,10 +41,9 @@ data:
       kubernetesGateway: true
     experimental:               
       kubernetesGateway: true   ## 允许使用 Kubernetes Gateway API
-      plugins:   ## 插件配置
+      localPlugins:             # 使用本地插件
         plugindemo:
-        moduleName: "github.com/traefik/plugindemo"
-        version: "v0.2.2"
+          moduleName: "github.com/traefik/plugindemo"
     log:
       filePath: "/etc/traefik/logs/traefik.log" ## 设置调试日志文件存储路径，如果为空则输出到控制台
       level: "DEBUG"             ## 设置调试日志级别

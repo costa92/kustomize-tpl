@@ -19,7 +19,7 @@ spec:
       terminationGracePeriodSeconds: 1
       containers:
       - name: traefik
-        image: traefik:v2.9.10
+        image: costa92/traefik-plugin:2.9.10
         ports:
           - name: web
             containerPort: 80
