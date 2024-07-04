@@ -1,2 +1,35 @@
 # kustomize-tpl
 kustomize 模板 
+
+
+## 开始安装
+1. [安装 kustomize](docs/安装/kustomize/install.md)
+2. 安装traefik
+
+```sh
+kubectl apply -k public/traefik/
+```
+3. 安装kubernetes gateway
+
+```sh
+kubectl apply -k public/gateway/
+```
+4. [安装 istio](docs/安装/istio/install.md)
+
+5. 安装 dev 空间
+
+```sh
+ kubectl apply -k overlays/dev/
+```
+
+6. 安装 Gateway
+
+```sh
+kubectl apply -f tcm/gw/blog-gv-istio.yaml
+```
+
+7. 安装 dev blog
+
+```sh
+kubectl apply -k overlays/dev/blog-web/
+```
