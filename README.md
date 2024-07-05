@@ -33,3 +33,5 @@ kubectl apply -f tcm/gw/blog-gv-istio.yaml
 ```sh
 kubectl apply -k overlays/dev/blog-web/
 ```
+
+8. 安装 

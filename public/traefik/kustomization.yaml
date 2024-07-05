@@ -10,3 +10,4 @@ resources:
 - service.yaml
 - middleware.yaml
 - ingressroute.yaml
+# - argo-Ingress-route.yaml  # 安装 argo 时需要

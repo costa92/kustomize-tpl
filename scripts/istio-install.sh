@@ -31,10 +31,20 @@ ISTIO_INSTALL_PATH="/usr/local/bin"
 
 # istio install
 install_istio() {
+
+    #  判断是否已经下载 ISTIO_DOWNLOAD_PATH
+    if [ -f "${ISTIO_DOWNLOAD_PATH}" ]; then
+        echo "istio is downloaded"
+    else
+        echo "istio is not downloaded"
+        echo "download istio"
+        is_tmp_dir
+        mkdir -p ${ISTIO_DIR}
+        wget -O ${ISTIO_DOWNLOAD_PATH} ${ISTIO_DOWNLOAD_URL}
+    fi
+
     echo "install istio"
     is_tmp_dir
-    mkdir -p ${ISTIO_DIR}
-    wget -O ${ISTIO_DOWNLOAD_PATH} ${ISTIO_DOWNLOAD_URL}
     tar -zxvf ${ISTIO_DOWNLOAD_PATH} -C ${ISTIO_DIR}
     sudo mv ${ISTIO_DIR}/istio-${ISTIO_VERSION}/bin/istioctl /usr/local/bin/istioctl
 }

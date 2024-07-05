@@ -10,6 +10,7 @@ spec:
   - name: blog-web-gateway
   hostnames:     #为路由配置域名
   - hello-world.local  #可配置泛域名,可配置多个
+  - traefik.test.com
   rules: #配置详细的路由规则，可配置多个，下面有对各种规则类型的详细解析
   - matches:  #匹配条件
     - path: #路径匹配
