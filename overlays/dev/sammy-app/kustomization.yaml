@@ -20,5 +20,5 @@ patches:
 - target:
     version: v1 
     kind: Service 
-    name: my-service
+    name: base-service  # this is the name of the resource in base 
   path: service-patch.yaml

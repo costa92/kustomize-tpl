@@ -1,4 +1,8 @@
 - op: replace
+  path: /metadata/name
+  value: sammy-app
+
+- op: replace
   path: /spec/type
   value: LoadBalancer
 
