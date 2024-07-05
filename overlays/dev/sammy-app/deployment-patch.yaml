@@ -17,4 +17,5 @@
       items:
       - key: body
         path: index.html
-        
+
+## # kubectl explain Deployment.spec.template.spec.containers
