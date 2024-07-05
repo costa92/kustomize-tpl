@@ -7,7 +7,7 @@ kustomize 模板
 2. 安装traefik
 
 ```sh
-kubectl apply -k public/traefik/
+kubectl apply -k public/traefik/w
 ```
 3. 安装kubernetes gateway
 
