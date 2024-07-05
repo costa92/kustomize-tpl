@@ -22,6 +22,20 @@ kubectl apply -k public/gateway/
  kubectl apply -k overlays/dev/
 ```
 
+### 使用的是 kubernetes gateway
+6. 安装 Gateway
+```sh
+kubectl apply -f tcm/gw/blog-gw.yaml
+```
+7. 安装 dev blog
+
+```sh
+kubectl apply -k overlays/dev/blog-web/
+```
+
+
+### 使用的是 istio
+
 6. 安装 Gateway
 
 ```sh
@@ -34,4 +48,9 @@ kubectl apply -f tcm/gw/blog-gv-istio.yaml
 kubectl apply -k overlays/dev/blog-web/
 ```
 
-8. 安装 
+8. 安装 VirtualService
+
+```sh
+kubectl apply -f tcm/vs/blog-vs-istio.yaml
+```
+

@@ -12,3 +12,5 @@ spec:
       allowedRoutes:  #定义流量转发范围
         namespaces:
           from: All  #允许 Gateway 往所有的 Namespace 的 Pod 转发流量。
+
+# kubectl get gateways.gateway.networking.k8s.io -A

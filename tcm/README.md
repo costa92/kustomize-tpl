@@ -10,7 +10,7 @@ metadata:
   name: blog-web-gateway
   namespace: dev  # namespace where the gateway is deployed
 spec:
-  gatewayClassName: traefik-gateway-class
+  gatewayClassName: traefik-gateway-class  #绑定的 GatewayClass 名称。
   listeners:  # 定义了一些监听项，供 Route 进行绑定
     - name: http #监听项名称。
       protocol: HTTP   #定义协议，HTTP或者HTTPS 

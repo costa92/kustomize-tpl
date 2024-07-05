@@ -8,7 +8,7 @@ spec:
   hosts:
   - "traefik.test.com"
   gateways:
-  - blog-web-gateway-dev
+  - blog-web-gateway
   http:
   - match:
     - uri:

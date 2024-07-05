@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: blog-web-gateway-dev
+  name: blog-web-gateway
   namespace: dev
 spec:
   selector:
@@ -13,3 +13,5 @@ spec:
         name: HTTP-80
         number: 80
         protocol: HTTP
+
+## kubectl get -n dev gateways.networking.istio.io
