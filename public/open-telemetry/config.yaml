@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: otel-agent-conf
+  labels:
+    component: otel-agent-conf
+
+data:
+  otel-agent-config: |
+  
