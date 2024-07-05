@@ -23,10 +23,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: "128M"
+            memory: "128Mi"
           limits:
             cpu: 100m
-            memory: "256M"
+            memory: "256Mi"
         env:
         - name: LOG_LEVEL
           value: "DEBUG"
