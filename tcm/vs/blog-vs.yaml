@@ -16,4 +16,8 @@ spec:
     route:
     - destination:
         host:  blog-web-service-dev.dev.svc.cluster.local  # service 名称
+      weight: 25
         # subset: stable  # service 子集
+    - destination:
+        host:  sammy-app-dev.dev.svc.cluster.local  # service 名称
+      weight: 75

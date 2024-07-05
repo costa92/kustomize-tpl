@@ -5,7 +5,7 @@ commonLabels:
 resources:
 - ../../../base
 - configmap.yaml 
-# - service.yaml 
+- service.yaml 
 images:
 - name: default_image
   newName: nginx
