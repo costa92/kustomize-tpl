@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: prometheus-gateway
+  namespace: prometheus
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - hosts:
+        - prometheus.test.com
+      port:
+        name: HTTP-80
+        number: 80
+        protocol: HTTP
+
+## kubectl get -n dev gateways.networking.istio.io

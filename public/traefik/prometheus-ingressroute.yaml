@@ -1,12 +1,13 @@
+# prometheus.test.com
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: blog-web-ingressroute
+  name: prometheus-ingressroute
 spec:
   entryPoints:
   - web
   routes:
-  - match: Host(`traefik.test.com`) # 域名
+  - match: Host(`prometheus.test.com`) # 域名
     kind: Rule
     middlewares:
       - name: plugindemo
