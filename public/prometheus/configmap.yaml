@@ -11,3 +11,36 @@ data:
       - job_name: 'prometheus'
         static_configs:
         - targets: ['localhost:9090']
+
+      # https://yunlzheng.gitbook.io/prometheus-book/part-iii-prometheus-shi-zhan/readmd/service-discovery-with-kubernetes
+      # scrape kubernetes pods
+      - job_name: 'kubernetes-nodes'
+        tls_config:
+          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+        kubernetes_sd_configs:
+        - role: node
+  
+      # scrape kubernetes services
+      # - job_name: 'kubernetes-service-endpoints'
+      #   kubernetes_sd_configs:
+      #   - role: endpoints
+      #   relabel_configs:
+      #   - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_should_be_scraped]
+      #     action: keep
+      #     regex: true
+      #   - action: labelmap
+      #     regex: __meta_kubernetes_pod_label_(.+)
+      #   - source_labels: [__meta_kubernetes_namespace]
+      #     action: replace
+      #     target_label: k8s_namespace
+      #   - source_labels: [__meta_kubernetes_service_name]
+      #     action: replace
+      #     target_label: k8s_service
+      #   - source_labels: [__meta_kubernetes_pod_name]
+      #     separator: ;
+      #     regex: (.*)
+      #     replacement: $1
+      #     target_label: k8s_pod
+      #     action: replace
+

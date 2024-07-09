@@ -10,3 +10,5 @@
   path: /spec/ports/0/targetPort
   value: 80
 
+- op: remove
+  path: /metadata/annotations

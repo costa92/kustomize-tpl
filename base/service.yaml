@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: base-service
+  annotations:
+    prometheus.io/should_be_scraped: "true"  # 如果 service 里的 annotation 里有 prometheus.io/should_be_scraped 配置的话 Prometheus 才会去拉取 metrics 信息
   labels:
     app: base-app
 spec:
