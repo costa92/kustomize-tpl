@@ -54,3 +54,9 @@ kubectl apply -k overlays/dev/blog-web/
 kubectl apply -f tcm/vs/blog-vs-istio.yaml
 ```
 
+
+## 修改配置重启
+
+```sh
+kubectl rollout restart deployment prometheus -n prometheus
+```

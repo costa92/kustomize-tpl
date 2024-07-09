@@ -7,4 +7,3 @@ resources:
 - configmap.yaml
 - service.yaml
 - deployment.yaml
-- k8s-node-exporter.yaml
