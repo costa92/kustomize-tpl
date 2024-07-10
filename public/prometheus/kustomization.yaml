@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: prometheus
 resources:
 - ns.yaml
+- prometheus-pvc.yaml
 - k8s-rbac.yaml
 - configmap.yaml
 - service.yaml

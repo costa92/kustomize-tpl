@@ -1,0 +1,7 @@
+# https://www.qikqiak.com/k8strain/storage/local/
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- storage-class.yaml
+- prometheus-pv.yaml
+- grafana-pv.yaml

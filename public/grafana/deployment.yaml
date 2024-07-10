@@ -1,3 +1,4 @@
+## docs https://www.qikqiak.com/k8strain/monitor/grafana/
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -22,6 +23,10 @@ spec:
       labels:
         app: grafana
     spec:
+      volumes:
+      - name: grafana-storage
+        persistentVolumeClaim:
+          claimName: grafana
       containers:        
         - name: grafana
           image:  grafana/grafana:10.2.4
@@ -36,12 +41,13 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "50m"
-          readinessProbe:
-            httpGet:
+          readinessProbe:  
+            failureThreshold: 10  # 默认10次
+            httpGet:  # 默认httpGet
               path: /api/health
               port: 3000
-            initialDelaySeconds: 60
-            periodSeconds: 10
+            initialDelaySeconds: 60 # 默认10秒
+            periodSeconds: 10  # 默认10秒
           livenessProbe:
             tcpSocket:
               port: 3000
@@ -49,4 +55,7 @@ spec:
             periodSeconds: 10
           ports:
             - containerPort: 3000
+          volumeMounts:
+          - name: grafana-storage
+            mountPath: /var/lib/grafana
 

@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: monitoring
 resources:
 - ns.yaml
+- grafana-pvc.yaml
 - service.yaml
 - deployment.yaml
