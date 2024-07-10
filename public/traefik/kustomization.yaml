@@ -11,4 +11,5 @@ resources:
 - middleware.yaml
 - ingressroute.yaml
 - prometheus-ingressroute.yaml
+- monitoring-ingressroute.yaml
 # - argo-Ingress-route.yaml  # 安装 argo 时需要

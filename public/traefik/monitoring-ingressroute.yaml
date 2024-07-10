@@ -1,0 +1,18 @@
+# prometheus.test.com
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: monitoring-ingressroute
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: Host(`monitoring.test.com`) # 域名
+    kind: Rule
+    middlewares:
+      - name: plugindemo
+    services:
+      - name: istio-ingressgateway # 与svc的name一致
+        port: 80      # 与svc的port一致
+        namespace: istio-system # 与svc的namespace一致
+        passHostHeader: true  # 是否传递host头

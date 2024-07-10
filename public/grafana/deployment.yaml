@@ -26,6 +26,12 @@ spec:
         - name: grafana
           image:  grafana/grafana:10.2.4
           imagePullPolicy: IfNotPresent
+          # 设置环境变量 GF_SECURITY_ADMIN_USER 与 GF_SECURITY_ADMIN_PASSWORD 
+          env:
+          - name: GF_SECURITY_ADMIN_USER
+            value: "admin"
+          - name: GF_SECURITY_ADMIN_PASSWORD
+            value: admin321  
           resources:
             limits:
               memory: "128Mi"
