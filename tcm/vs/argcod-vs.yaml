@@ -15,4 +15,3 @@ spec:
     route:
     - destination:
         host:  argocd-server.argocd.svc.cluster.local  # service 名称
-

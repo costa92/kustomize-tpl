@@ -20,5 +20,3 @@ spec:
     - name: blog-web-service-dev # service 名称
       port: 80  #service 端口
       # weight: 100  #权重
-
-      

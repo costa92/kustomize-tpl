@@ -9,7 +9,7 @@ data:
       checkNewVersion: false
       sendAnonymousUsage: false
     serversTransport:
-      insecureSkipVerify: true     ## Traefik忽略验证代理服务的TLS证书      
+      insecureSkipVerify: true     ## Traefik忽略验证代理服务的TLS证书
     api:
       insecure: true            ## 允许HTTP 方式访问API
       dashboard: true           ## 启用Dashboard
@@ -21,11 +21,11 @@ data:
     entryPoints:
       web:
         address: ":80"
-        forwardedHeaders: 
+        forwardedHeaders:
           insecure: true        ## 信任所有的forward headers
       websecure:
         address: ":443"         ## 配置443端口，并设置入口名称为 websecure
-        forwardedHeaders: 
+        forwardedHeaders:
           insecure: true
       traefik:
         address: ":9000"        ## 配置9000端口，并设置入口名称为 dashboard
@@ -39,7 +39,7 @@ data:
       kubernetesIngress:        ## 启动Kubernetes Ingress方式来配置路由规则
         ingressClass: ""
       kubernetesGateway: true
-    experimental:               
+    experimental:
       kubernetesGateway: true   ## 允许使用 Kubernetes Gateway API
       localPlugins:             # 使用本地插件
         plugindemo:

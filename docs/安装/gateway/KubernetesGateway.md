@@ -8,7 +8,7 @@
 ## 验证
 
 ```sh
-=> kubectl get GatewayClass 
+=> kubectl get GatewayClass
 
 NAME                    CONTROLLER   AGE
 traefik-gateway-class                9m51s

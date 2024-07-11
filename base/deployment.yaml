@@ -30,4 +30,3 @@ spec:
         env:
         - name: LOG_LEVEL
           value: "DEBUG"
-    

@@ -32,7 +32,7 @@ spec:
         - containerPort: 9093
           name: http
         volumeMounts:
-        - mountPath: /alertmanager 
+        - mountPath: /alertmanager
           name: data
         - mountPath: "/etc/alertmanager"
           name: alertcfg

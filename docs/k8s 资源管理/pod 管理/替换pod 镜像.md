@@ -1,6 +1,6 @@
 # 不同的环境设置不同的镜像
 
-## 1.设置 deployment.yaml 文件中镜像命名 
+## 1.设置 deployment.yaml 文件中镜像命名
 
 ```yaml
 ...
@@ -17,7 +17,7 @@ spec:
       containers:
       - name: server
         image: default_image  # 默认镜像
-  
+
 ```
 
 ## 2.修改各个环境的 kustomization.yaml 文件
@@ -33,7 +33,7 @@ images:
 ```shell
 kubectl kustomize ./overlays/dev/sammy-app
 ```
-查看镜像是否为 nginx:v1.16 
+查看镜像是否为 nginx:v1.16
 
 
 ## 4.部署
@@ -51,5 +51,3 @@ kubectl delete -k ./overlays/dev/sammy-app
 ```shell
 kustomize set image nginx=nginx:v1.17
 ```
-
-

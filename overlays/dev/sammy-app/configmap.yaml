@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: sammy-app
 data:
-  body: > 
+  body: >
     <html>
       <style>
         body {

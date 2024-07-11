@@ -1,4 +1,4 @@
-# 管理 ns 
+# 管理 ns
 
 ## 查看 namespace
 ```sh
@@ -9,5 +9,3 @@ kubectl get ns
 ```sh
 kubectl create ns dev
 ```
-
-

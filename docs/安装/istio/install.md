@@ -15,4 +15,3 @@
 ```sh
 ./scripts/istio-install.sh istio_demo
 ```
-

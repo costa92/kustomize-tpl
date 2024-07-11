@@ -37,7 +37,7 @@ spec:
       securityContext: # 设置容器运行用户为root
         runAsUser: 0  # 默认为0
       volumes:
-      - name: prometheus-storage  
+      - name: prometheus-storage
         persistentVolumeClaim:
           claimName: prometheus
       - name: prometheus-config

@@ -7,7 +7,7 @@ spec:
   gatewayClassName: traefik-gateway-class
   listeners:  # 定义了一些监听项，供 Route 进行绑定
     - name: http #监听项名称。
-      protocol: HTTP   #定义协议，HTTP或者HTTPS 
+      protocol: HTTP   #定义协议，HTTP或者HTTPS
       port: 80   #监听项所占用的端口
       allowedRoutes:  #定义流量转发范围
         namespaces:

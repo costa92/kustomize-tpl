@@ -118,7 +118,7 @@ I0705 15:05:47.043908   39530 cache.go:194] Successfully downloaded all kic arti
 I0705 15:05:47.043927   39530 start.go:360] acquireMachinesLock for minikube: {Name:mk4b960829c03ddc3010fac6bdb17168cd8bb28c Clock:{} Delay:500ms Timeout:10m0s Cancel:<nil>}
 I0705 15:05:47.043963   39530 start.go:364] duration metric: took 26.304µs to acquireMachinesLock for "minikube"
 I0705 15:05:47.043971   39530 start.go:96] Skipping create...Using existing machine configuration
-I0705 15:05:47.043974   39530 fix.go:54] fixHost starting: 
+I0705 15:05:47.043974   39530 fix.go:54] fixHost starting:
 I0705 15:05:47.044158   39530 cli_runner.go:164] Run: docker container inspect minikube --format={{.State.Status}}
 I0705 15:05:47.053911   39530 fix.go:112] recreateIfNeeded on minikube: state=Stopped err=<nil>
 W0705 15:05:47.053929   39530 fix.go:138] unexpected machine state, will restart: <nil>
@@ -153,11 +153,11 @@ I0705 15:05:50.612321   39530 main.go:141] libmachine: About to run SSH command:
 		if ! grep -xq '.*\sminikube' /etc/hosts; then
 			if grep -xq '127.0.1.1\s.*' /etc/hosts; then
 				sudo sed -i 's/^127.0.1.1\s.*/127.0.1.1 minikube/g' /etc/hosts;
-			else 
-				echo '127.0.1.1 minikube' | sudo tee -a /etc/hosts; 
+			else
+				echo '127.0.1.1 minikube' | sudo tee -a /etc/hosts;
 			fi
 		fi
-I0705 15:05:50.731957   39530 main.go:141] libmachine: SSH cmd err, output: <nil>: 
+I0705 15:05:50.731957   39530 main.go:141] libmachine: SSH cmd err, output: <nil>:
 I0705 15:05:50.731985   39530 ubuntu.go:175] set auth options {CertDir:/home/hellotalk/.minikube CaCertPath:/home/hellotalk/.minikube/certs/ca.pem CaPrivateKeyPath:/home/hellotalk/.minikube/certs/ca-key.pem CaCertRemotePath:/etc/docker/ca.pem ServerCertPath:/home/hellotalk/.minikube/machines/server.pem ServerKeyPath:/home/hellotalk/.minikube/machines/server-key.pem ClientKeyPath:/home/hellotalk/.minikube/certs/key.pem ServerCertRemotePath:/etc/docker/server.pem ServerKeyRemotePath:/etc/docker/server-key.pem ClientCertPath:/home/hellotalk/.minikube/certs/cert.pem ServerCertSANs:[] StorePath:/home/hellotalk/.minikube}
 I0705 15:05:50.732037   39530 ubuntu.go:177] setting up certificates
 I0705 15:05:50.732055   39530 provision.go:84] configureAuth start
@@ -223,7 +223,7 @@ Restart=on-failure
 # NOTE: default-ulimit=nofile is set to an arbitrary number for consistency with other
 # container runtimes. If left unlimited, it may result in OOM issues with MySQL.
 ExecStart=
-ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --default-ulimit=nofile=1048576:1048576 --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=docker --insecure-registry 10.96.0.0/12 
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --default-ulimit=nofile=1048576:1048576 --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=docker --insecure-registry 10.96.0.0/12
 ExecReload=/bin/kill -s HUP \$MAINPID
 
 # Having non-zero Limit*s causes performance problems due to accounting overhead
@@ -273,7 +273,7 @@ Restart=on-failure
 # NOTE: default-ulimit=nofile is set to an arbitrary number for consistency with other
 # container runtimes. If left unlimited, it may result in OOM issues with MySQL.
 ExecStart=
-ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --default-ulimit=nofile=1048576:1048576 --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=docker --insecure-registry 10.96.0.0/12 
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --default-ulimit=nofile=1048576:1048576 --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=docker --insecure-registry 10.96.0.0/12
 ExecReload=/bin/kill -s HUP $MAINPID
 
 # Having non-zero Limit*s causes performance problems due to accounting overhead
@@ -301,7 +301,7 @@ I0705 15:05:51.306326   39530 main.go:141] libmachine: Using SSH client type: na
 I0705 15:05:51.306443   39530 main.go:141] libmachine: &{{{<nil> 0 [] [] []} docker [0x82d6e0] 0x830440 <nil>  [] 0s} 127.0.0.1 32768 <nil> <nil>}
 I0705 15:05:51.306452   39530 main.go:141] libmachine: About to run SSH command:
 sudo diff -u /lib/systemd/system/docker.service /lib/systemd/system/docker.service.new || { sudo mv /lib/systemd/system/docker.service.new /lib/systemd/system/docker.service; sudo systemctl -f daemon-reload && sudo systemctl -f enable docker && sudo systemctl -f restart docker; }
-I0705 15:05:51.426332   39530 main.go:141] libmachine: SSH cmd err, output: <nil>: 
+I0705 15:05:51.426332   39530 main.go:141] libmachine: SSH cmd err, output: <nil>:
 I0705 15:05:51.426345   39530 machine.go:97] duration metric: took 4.130507001s to provisionDockerMachine
 I0705 15:05:51.426351   39530 start.go:293] postStartSetup for "minikube" (driver="docker")
 I0705 15:05:51.426358   39530 start.go:322] creating required directories: [/etc/kubernetes/addons /etc/kubernetes/manifests /var/tmp/minikube /var/lib/minikube /var/lib/minikube/certs /var/lib/minikube/images /var/lib/minikube/binaries /tmp/gvisor /usr/share/ca-certificates /etc/ssl/certs]
@@ -1142,7 +1142,7 @@ Allocated resources:
 Events:
   Type    Reason    Age    From        Message
   ----    ------    ----   ----        -------
-  Normal  Starting  3m24s  kube-proxy  
+  Normal  Starting  3m24s  kube-proxy
 
 
 ==> dmesg <==
@@ -1723,4 +1723,3 @@ I0705 07:07:01.279203       1 leaderelection.go:253] successfully acquired lease
 I0705 07:07:01.279305       1 event.go:282] Event(v1.ObjectReference{Kind:"Endpoints", Namespace:"kube-system", Name:"k8s.io-minikube-hostpath", UID:"c1841c4c-a535-4a36-a9e3-d5b4b223458d", APIVersion:"v1", ResourceVersion:"17395", FieldPath:""}): type: 'Normal' reason: 'LeaderElection' minikube_f8a82908-161e-416c-874f-0c71667662d2 became leader
 I0705 07:07:01.279330       1 controller.go:835] Starting provisioner controller k8s.io/minikube-hostpath_minikube_f8a82908-161e-416c-874f-0c71667662d2!
 I0705 07:07:01.380253       1 controller.go:884] Started provisioner controller k8s.io/minikube-hostpath_minikube_f8a82908-161e-416c-874f-0c71667662d2!
-

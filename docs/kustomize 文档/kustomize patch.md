@@ -1,4 +1,4 @@
-# kustomize patchs 
+# kustomize patchs
 
 ## use patches to add or override resources
 
@@ -16,10 +16,10 @@ update file: overlay/dev/sammy-app/kustomization.yaml
 
 ```yaml
 patches:
-- path: configmap.yaml  
+- path: configmap.yaml
 - target:
-    version: v1  
-    kind: Service 
+    version: v1
+    kind: Service
     name: my-service
   path: service-patch.yaml
 ```

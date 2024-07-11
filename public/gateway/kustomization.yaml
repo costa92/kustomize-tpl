@@ -5,4 +5,3 @@ resources:
 - definitions.yaml
 - rbac.yaml
 - gateway-class.yaml
-

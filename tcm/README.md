@@ -13,7 +13,7 @@ spec:
   gatewayClassName: traefik-gateway-class  #绑定的 GatewayClass 名称。
   listeners:  # 定义了一些监听项，供 Route 进行绑定
     - name: http #监听项名称。
-      protocol: HTTP   #定义协议，HTTP或者HTTPS 
+      protocol: HTTP   #定义协议，HTTP或者HTTPS
       port: 80   #监听项所占用的端口
       allowedRoutes:  #定义流量转发范围
         namespaces:
@@ -44,7 +44,7 @@ spec:
       port: 80  #service 端口
       # weight: 100  #权重
 ```
-### 2. 使用  networking.istio 
+### 2. 使用  networking.istio
 安装  Gateway
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -57,7 +57,7 @@ spec:
     istio: ingressgateway # use istio default controller
   servers:
     - hosts:
-        - traefik.test.com  # 
+        - traefik.test.com  #
       port:
         name: HTTP-80
         number: 80

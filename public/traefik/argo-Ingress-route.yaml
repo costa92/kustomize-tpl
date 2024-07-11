@@ -25,7 +25,7 @@ spec:
       services:
       - name: argocd-server
         port: 80
-        scheme: https  
+        scheme: https
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -42,7 +42,7 @@ spec:
       services:
         - name: argocd-server
           port: 80
-    - match: Host(`argocd.test.com`) && Headers(`Content-Type`, `application/grpc`) 
+    - match: Host(`argocd.test.com`) && Headers(`Content-Type`, `application/grpc`)
       kind: Rule
       priority: 11
       services:
@@ -50,5 +50,5 @@ spec:
           port: 80
           scheme: https
   tls:
-    secretName: argocd-tls 
+    secretName: argocd-tls
    #certResolver: default

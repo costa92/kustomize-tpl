@@ -4,7 +4,7 @@
 ## 生成yaml文件
 
 ```bash
-kustomize build . 
+kustomize build .
 ```
 
 eg:

@@ -1,5 +1,5 @@
 # kustomize-tpl
-kustomize 模板 
+kustomize 模板
 
 
 ## 开始安装

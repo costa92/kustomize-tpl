@@ -4,7 +4,7 @@ commonLabels:
   app: sammy-app
 resources:
 - ../../../base
-- configmap.yaml 
+- configmap.yaml
 images:
 - name: default_image
   newName: nginx
@@ -18,7 +18,7 @@ patches:
     kind: Deployment
   path: deployment-patch.yaml
 - target:
-    version: v1 
-    kind: Service 
-    name: base-service  # this is the name of the resource in base 
+    version: v1
+    kind: Service
+    name: base-service  # this is the name of the resource in base
   path: service-patch.yaml
