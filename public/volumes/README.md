@@ -23,3 +23,4 @@ chown -R 472:472 /data/monitoring/grafana
 ```sh
 chmod -R 777 /data/monitoring/grafana
 ```
+

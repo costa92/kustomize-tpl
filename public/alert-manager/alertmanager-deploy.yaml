@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alertmanager
+  labels:
+    app: alertmanager
+spec:
+  selector:
+    matchLabels:
+      app: alertmanager
+  template:
+    metadata:
+      labels:
+        app: alertmanager
+    spec:
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: alertmanager
+      - name: alertcfg
+        configMap:
+          name: alert-config
+      containers:
+      - name: alertmanager
+        image: prom/alertmanager:v0.26.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - "--config.file=/etc/alertmanager/config.yml"
+        # 指定数据存储位置 (Docker容器中的绝对位置)
+        - "--storage.path=/alertmanager"
+        ports:
+        - containerPort: 9093
+          name: http
+        volumeMounts:
+        - mountPath: /alertmanager 
+          name: data
+        - mountPath: "/etc/alertmanager"
+          name: alertcfg
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 100m
+            memory: 256Mi

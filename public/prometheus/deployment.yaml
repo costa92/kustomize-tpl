@@ -24,7 +24,7 @@ spec:
         args:
         - "--config.file=/etc/prometheus/prometheus.yml"
         - "--storage.tsdb.path=/prometheus" # 指定tsdb数据路径
-        - "--storage.tsdb.retention.time=2d"  
+        - "--storage.tsdb.retention.time=2d"  #何时删除旧数据，默认为 15 天
         - "--web.enable-lifecycle" # 支持热更新，直接执行localhost:9090/-/reload立即生效
         ports:
         - containerPort: 9090
@@ -34,6 +34,8 @@ spec:
           name: prometheus-config
         - mountPath: "/prometheus"  # 指定tsdb数据路径
           name: prometheus-storage
+      securityContext: # 设置容器运行用户为root
+        runAsUser: 0  # 默认为0
       volumes:
       - name: prometheus-storage  
         persistentVolumeClaim:

@@ -5,3 +5,4 @@ resources:
 - storage-class.yaml
 - prometheus-pv.yaml
 - grafana-pv.yaml
+- alertmanager-pv.yaml

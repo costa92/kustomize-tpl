@@ -8,6 +8,13 @@ data:
       scrape_interval: 15s #数据抓取时间
       scrape_timeout: 10s #抓取超时时间
       evaluation_interval: 1m #评估告警周期
+    alerting:
+      alertmanagers:
+      - static_configs:
+        - targets: ["alertmanager.prometheus.svc.cluster.local:9093"]
+    rule_files:
+     - /etc/prometheus/rules.yml
+
     scrape_configs:
       - job_name: 'prometheus'
         static_configs:
@@ -125,3 +132,16 @@ data:
           regex: kube-state-metrics
           replacement: $1
           action: keep
+  ## https://www.qikqiak.com/k8strain/monitor/alertmanager/
+  rules.yml: |
+    groups:
+    - name: test-node-mem
+      rules:
+      - alert: NodeMemoryUsage   # 告警规则的名称
+        expr: (node_memory_MemTotal_bytes - (node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes)) / node_memory_MemTotal_bytes * 100 > 20  # 是用于进行报警规则 PromQL 查询语句
+        for: 2m # 评估等待时间（Pending Duration），用于表示只有当触发条件持续一段时间后才发送告警，在等待期间新产生的告警状态为pending
+        labels: # 自定义标签，允许用户指定额外的标签列表，把它们附加在告警上  
+          team: node
+        annotations: # 指定了另一组标签，它们不被当做告警实例的身份标识，它们经常用于存储一些额外的信息，用于报警信息的展示之类的
+          summary: "{{$labels.instance}}: High Memory usage detected"
+          description: "{{$labels.instance}}: Memory usage is above 20% (current value is: {{ $value }}"
