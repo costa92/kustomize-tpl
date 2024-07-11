@@ -1,6 +1,10 @@
 #!/bin/sh
 
 
+# 从环境变量中获取要保护的文件列表
+#  IFS=',' read -r -a PROTECTED_FILES <<< "$PROTECTED_FILES_ENV"
+#  export PROTECTED_FILES_ENV="protected_file1.txt,protected_file2.txt"
+
 # 检查是否有修改
 # 要保护的文件列表
 PROTECTED_FILES=(
