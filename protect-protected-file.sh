@@ -1,13 +1,20 @@
 #!/bin/sh
 
-# 文件名
-PROTECTED_FILE="public/alert-manager/alertmanager-config.yaml"
 
 # 检查是否有修改
-if git diff --cached --name-only | grep -q "^$PROTECTED_FILE$"; then
-  echo "Error: You are trying to modify $PROTECTED_FILE, which is protected."
-  exit 1
-fi
+# 要保护的文件列表
+PROTECTED_FILES=(
+    "public/alert-manager/alertmanager-config.yaml" 
+)
+
+# 检查是否有文件被修改
+for FILE in "${PROTECTED_FILES[@]}"; do
+  if git diff --cached --name-only | grep -q "^$FILE$"; then
+    echo "Error: You are trying to modify $FILE, which is protected."
+    exit 1
+  fi
+done
+
 
 # 允许提交
 exit 0
