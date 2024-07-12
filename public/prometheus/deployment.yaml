@@ -26,6 +26,7 @@ spec:
         - "--storage.tsdb.path=/prometheus" # 指定tsdb数据路径
         - "--storage.tsdb.retention.time=2d"  #何时删除旧数据，默认为 15 天
         - "--web.enable-lifecycle" # 支持热更新，直接执行localhost:9090/-/reload立即生效
+        - "--web.external-url=http://prometheus.test.com"
         ports:
         - containerPort: 9090
           protocol: TCP
