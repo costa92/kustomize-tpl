@@ -60,3 +60,7 @@ kubectl apply -f tcm/vs/blog-vs-istio.yaml
 ```sh
 kubectl rollout restart deployment prometheus -n prometheus
 ```
+
+## 监控 
+[kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
+[docker ](https://hub.docker.com/r/bitnami/kube-state-metrics/tags)
