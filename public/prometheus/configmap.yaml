@@ -144,4 +144,16 @@ data:
           team: node
         annotations: # 指定了另一组标签，它们不被当做告警实例的身份标识，它们经常用于存储一些额外的信息，用于报警信息的展示之类的
           summary: "{{$labels.instance}}: High Memory usage detected"
-          description: "{{$labels.instance}}: Memory usage is above 20% (current value is: {{ $value }}"
+          description: "{{$labels.instance}}: Memory usage is above 20% (current value is: {{ $value }}" # 用于告警信息的展示  {{ $value }} 为PromQL查询语句的结果  {{ $labels.instance }} 为自定义标签  {{ $labels.alertname }} 为告警规则名称  {{ $labels.severity }} 为告警级别  {{ $labels.job }} 为告警实例的job名称
+          
+    - name: test-node-cpu
+      rules:
+      - alert: NodeCPUUsage
+        expr: 100-avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) by(instance)*100 > 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Instance {{ $labels.instance }} cpu使用率过高"
+          description: "{{ $labels.instance }} of job {{$labels.job}}cpu使用率超过80%,当前使用率[{{ $value }}]." # 尽可能把详细告警信息写入summary标签值，因为告警短信/邮件/钉钉发送的内容使用了summary标签中的值。
+      
