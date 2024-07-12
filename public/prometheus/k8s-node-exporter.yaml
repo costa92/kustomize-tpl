@@ -25,3 +25,21 @@ spec:
           name: scrape
       hostNetwork: true
       hostPID: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: node-exporter
+  name: k8s-node-exporter
+spec:
+  clusterIP: None
+  ports:
+    - name: target
+      port: 9100
+      protocol: TCP
+      targetPort: target
+  selector:
+    app.kubernetes.io/name: node-exporter
+  sessionAffinity: None
+  type: ClusterIP
