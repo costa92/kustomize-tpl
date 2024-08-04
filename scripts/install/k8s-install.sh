@@ -39,11 +39,18 @@ if [ -f ~/.bash_completion.d/kubeadm ]; then
 fi
 '
 
-# 将内容追加到 ~/.bashrc 的末尾
-echo "$content" >> ~/.bashrc
+ # 定义一个唯一标识符，用于检查内容是否已经存在
+ identifier='# Load kubectl bash completion'
 
-# 重新加载 ~/.bashrc 文件
-source ~/.bashrc
+ # 检查 ~/.bashrc 文件中是否已经包含标识符
+ if ! grep -qF "$identifier" ~/.bashrc; then
+   # 将内容追加到 ~/.bashrc 的末尾
+   echo "$content" >> ~/.bashrc
+   # 重新加载 ~/.bashrc 文件
+   source ~/.bashrc
+ else
+   echo "内容已存在于 ~/.bashrc"	 
+ fi
 }
 
 
