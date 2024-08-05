@@ -135,7 +135,7 @@ containerd::install::runc()
     wget -P $download_dir https://github.com/opencontainers/runc/releases/download/v${RuncVersion}/runc.amd64
   fi
   
-  conn::util::sudo "mv ${download_dir}/unc.amd64 /usr/local/bin/runc"
+  conn::util::sudo "mv ${download_dir}/runc.amd64 /usr/local/bin/runc"
   conn::util::sudo "chmod +x /usr/local/bin/runc"
 
 }

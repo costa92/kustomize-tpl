@@ -58,9 +58,27 @@ k8s::install::generate::config()
 {
    local tmp_dir_path="${TMP_PATH}/k8s/"
    echo ${tmp_dir_path}
-   local tmp_config="${tmp_dir_path}kubeadm-init.yml"
+   local tmp_config="${tmp_dir_path}kubeadm-init.yaml"
    conn::util::create::directory "${TMP_PATH}/k8s"
    kubeadm config print init-defaults >> ${tmp_config}
+
+   # 修改配置文件内容
+   # 1. 修改镜像为国内阿里云的
+   sed -i 's|imageRepository: registry.k8s.io|imageRepository: registry.aliyuncs.com/google_containers|g' ${tmp_config}
+   
+   # 移动配置文件
+   mv ${tmp_config} ${PROJECT_ROOT}/scripts/install/
+}
+
+k8s::install::init(){
+  local k8s_init_config=${PROJECT_ROOT}/scripts/install/kubeadm-init.yaml
+  
+  if [ ! -e ${k8s_init_config} ]; then
+     k8s::install::generate::config
+  fi
+  #执行初始化并将日志记录到 kubeadm-init.log 日志文件中
+  kubeadm init --config=${k8s_init_conigf} |tee ${TMP_PATH}/kubeadm-init.log
+
 }
 
 k8s::install-lib()
